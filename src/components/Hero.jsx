@@ -68,7 +68,7 @@ export default function Hero() {
       {/* Deep Background Media */}
       <motion.div 
         className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full lg:w-[70vw] h-[80vh] z-0 overflow-hidden"
-        style={{ y: backgroundY, scale: backgroundScale }}
+        style={{ y: backgroundY, scale: backgroundScale, willChange: "transform", transform: "translateZ(0)" }}
       >
         <div className="absolute inset-0 bg-black/30 z-10 mix-blend-overlay"></div>
         <div className="absolute inset-0 bg-noise opacity-50 mix-blend-overlay z-20"></div>
@@ -96,12 +96,12 @@ export default function Hero() {
       {/* Massive Typography - Mixed Fonts */}
       <motion.div 
         className="relative z-30 w-full flex flex-col items-center justify-center text-center mix-blend-difference pointer-events-none"
-        style={{ opacity: opacityText }}
+        style={{ opacity: opacityText, willChange: "opacity", transform: "translateZ(0)" }}
       >
         <h1 className="flex flex-col items-center font-primary w-full">
           {/* Top Line (Sans-Serif) */}
           <motion.div 
-            style={{ y: textY1 }}
+            style={{ y: textY1, willChange: "transform", transform: "translateZ(0)" }}
             className="overflow-hidden flex gap-2 sm:gap-4 lg:gap-8 mb-[-4vw] sm:mb-[-2vw]"
           >
             {textLine1.split("").map((char, index) => (
@@ -121,7 +121,7 @@ export default function Hero() {
 
           {/* Bottom Line (Serif Luxury) */}
           <motion.div 
-            style={{ y: textY2 }}
+            style={{ y: textY2, willChange: "transform", transform: "translateZ(0)" }}
             className="overflow-hidden flex gap-2"
           >
             {textLine2.split("").map((char, index) => (

@@ -20,10 +20,9 @@ export default function Navbar() {
 
   useMotionValueEvent(scrollY, "change", (latest) => {
     const previous = scrollY.getPrevious();
-    if (latest > 150 && latest > previous) {
-      setHidden(true);
-    } else {
-      setHidden(false);
+    const shouldHide = latest > 150 && latest > previous;
+    if (hidden !== shouldHide) {
+      setHidden(shouldHide);
     }
   });
 

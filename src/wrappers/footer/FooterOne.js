@@ -26,7 +26,7 @@ const FooterOne = ({
 
   useEffect(() => {
     setTop(100);
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
@@ -55,7 +55,7 @@ const FooterOne = ({
     const checkScreenSize = () => setIsMobile(window.innerWidth <= 768);
     checkScreenSize();
 
-    window.addEventListener("resize", checkScreenSize);
+    window.addEventListener("resize", checkScreenSize, { passive: true });
     return () => window.removeEventListener("resize", checkScreenSize);
   }, []);
 

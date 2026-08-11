@@ -50,7 +50,7 @@ export default function FeaturedProducts() {
 
         {/* Horizontal Scrolling Track */}
         <motion.div 
-          style={{ x: xTransform }} 
+          style={{ x: xTransform, willChange: "transform", transform: "translateZ(0)" }} 
           className="flex items-center gap-16 lg:gap-32 pl-6 md:pl-24 lg:pl-[30vw] relative z-10"
         >
           {isLoading ? (

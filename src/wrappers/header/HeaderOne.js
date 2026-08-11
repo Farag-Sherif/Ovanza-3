@@ -22,7 +22,7 @@ const HeaderOne = ({
   useEffect(() => {
     const header = document.querySelector(".sticky-bar");
     setHeaderTop(header.offsetTop);
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };

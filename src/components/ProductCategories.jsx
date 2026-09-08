@@ -15,7 +15,7 @@ export default function ProductCategories({
   const isRTL = language === "ar";
 
   return (
-    <div className="bg-[#0a0a0a] border-b border-white/[0.08] py-4 w-full sticky top-[65px] z-30 backdrop-blur-xl bg-black/80">
+    <div className="bg-[#0a0a0a] border-b border-white/[0.08] py-4 w-full relative z-10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center gap-2 overflow-x-auto no-scrollbar py-1">
           {/* All Products Pill */}

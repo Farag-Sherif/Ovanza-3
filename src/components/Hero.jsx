@@ -3,11 +3,9 @@ import { ArrowDownRight } from "lucide-react";
 import { motion, useScroll, useTransform, useSpring } from "framer-motion";
 import { useTranslation } from "react-i18next";
 import { LanguageContext } from "../contexts/LanguageContext.jsx";
-import { useSettingsQuery } from "../hooks/queries/useSettingsQuery.js";
 
 export default function Hero() {
   const { language } = useContext(LanguageContext);
-  const { data } = useSettingsQuery();
   const { t } = useTranslation();
   const containerRef = useRef(null);
   const videoRef = useRef(null);
@@ -26,8 +24,8 @@ export default function Hero() {
   const textY2 = useTransform(smoothScrollY, [0, 1], ["0%", "80%"]);
   const opacityText = useTransform(smoothScrollY, [0, 0.5], [1, 0]);
 
-  const settings = data?.settings;
-  const mediaPath = settings?.main_image_path;
+  const mediaPath = "/hero-optimized-720p.mp4";
+  const mediaType = "video";
   const isRTL = language === "ar";
 
   useEffect(() => {
@@ -44,14 +42,7 @@ export default function Hero() {
 
     observer.observe(video);
     return () => observer.disconnect();
-  }, [mediaPath]);
-
-  const getMediaType = (url) => {
-    if (!url) return null;
-    const extension = url.split(".").pop().toLowerCase();
-    return ["mp4", "webm", "ogg"].includes(extension) ? "video" : "image";
-  };
-  const mediaType = getMediaType(mediaPath);
+  }, []);
 
   // Split text for stagger animations
   const textLine1 = isRTL ? "أوفانزا" : "Ovanza";

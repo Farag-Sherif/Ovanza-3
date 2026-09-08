@@ -21,7 +21,11 @@ export default function FeaturedProducts() {
 
   // Map scroll progress to horizontal translation
   const isRTL = language === "ar";
-  const xTransform = useTransform(smoothProgress, [0, 1], isRTL ? ["0%", "80%"] : ["0%", "-80%"]);
+  const xTransform = useTransform(
+    smoothProgress,
+    [0, 1],
+    isRTL ? ["calc(0% + 0vw)", "calc(100% - 100vw)"] : ["calc(0% - 0vw)", "calc(-100% + 100vw)"]
+  );
   
   // Skew effect based on scroll velocity (simulated via position difference, but we'll use a simpler mapping for reliability)
   // To keep it clean and robust, we'll map scale and opacity to individual items in view.
@@ -51,7 +55,7 @@ export default function FeaturedProducts() {
         {/* Horizontal Scrolling Track */}
         <motion.div 
           style={{ x: xTransform, willChange: "transform", transform: "translateZ(0)" }} 
-          className="flex items-center gap-16 lg:gap-32 pl-6 md:pl-24 lg:pl-[30vw] relative z-10"
+          className="flex items-center gap-16 lg:gap-32 pl-6 md:pl-24 lg:pl-[30vw] pr-6 md:pr-24 lg:pr-[10vw] w-max relative z-10"
         >
           {isLoading ? (
             Array(5).fill(0).map((_, i) => (

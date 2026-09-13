@@ -10,6 +10,7 @@ import { motion, AnimatePresence, useScroll, useMotionValueEvent } from "framer-
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [hidden, setHidden] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
   const [activeTab, setActiveTab] = useState("");
   const { scrollY } = useScroll();
   const { data } = useContext(DataContext);
@@ -23,6 +24,10 @@ export default function Navbar() {
     const shouldHide = latest > 150 && latest > previous;
     if (hidden !== shouldHide) {
       setHidden(shouldHide);
+    }
+    const scrolled = latest > 50;
+    if (isScrolled !== scrolled) {
+      setIsScrolled(scrolled);
     }
   });
 
@@ -70,7 +75,11 @@ export default function Navbar() {
         variants={{ visible: { y: 0 }, hidden: { y: "-150%" } }}
         animate={hidden ? "hidden" : "visible"}
         transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-        className="fixed top-0 left-0 right-0 z-50 flex justify-between items-center w-full px-6 md:px-12 py-6 pointer-events-none mix-blend-difference"
+        className={`fixed top-0 left-0 right-0 z-50 flex justify-between items-center w-full px-6 md:px-12 py-6 transition-all duration-300 ${
+          isScrolled 
+            ? "bg-[#030303]/95 backdrop-blur-md pointer-events-auto border-b border-white/5" 
+            : "pointer-events-none mix-blend-difference"
+        }`}
       >
         {/* Logo - Left */}
         <div className="pointer-events-auto flex-shrink-0">

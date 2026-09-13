@@ -1,4 +1,4 @@
-import { useContext, useRef } from "react";
+import { useContext, useRef, useState, useEffect } from "react";
 import { DataContext } from "../contexts/DataContext.jsx";
 import { LanguageContext } from "../contexts/LanguageContext.jsx";
 import { Link } from "react-router-dom";
@@ -8,7 +8,15 @@ import { ArrowRight } from "lucide-react";
 function AboutUs() {
   const { data, loading } = useContext(DataContext);
   const { language } = useContext(LanguageContext);
+  const [isMobile, setIsMobile] = useState(false);
   const containerRef = useRef(null);
+
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 1024);
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
 
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -42,7 +50,7 @@ function AboutUs() {
           
           {/* Left: Text Block */}
           <motion.div 
-            style={{ y: yText }}
+            style={{ y: isMobile ? 0 : yText }}
             className="lg:col-span-6 flex flex-col items-start text-left rtl:text-right z-20"
           >
             <div className="flex items-center gap-4 mb-16">
@@ -75,10 +83,10 @@ function AboutUs() {
           {/* Right: Immersive Image Reveal */}
           <div className="lg:col-span-6 w-full relative h-[60vh] lg:h-[90vh] overflow-hidden group rounded-bl-[100px] rounded-tr-[100px] bg-white/5">
              <motion.div 
-               className="w-full h-full clip-image-reveal"
+               className="w-full h-full"
                initial={{ clipPath: "polygon(0 100%, 100% 100%, 100% 100%, 0 100%)" }}
                whileInView={{ clipPath: "polygon(0 0, 100% 0, 100% 100%, 0 100%)" }}
-               viewport={{ once: true, margin: "-10%" }}
+               viewport={{ once: true, margin: "0px" }}
                transition={{ duration: 1.5, ease: [0.76, 0, 0.24, 1] }}
              >
                 {data?.settings?.image_logo_path ? (

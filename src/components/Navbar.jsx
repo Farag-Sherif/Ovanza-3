@@ -76,7 +76,7 @@ export default function Navbar() {
         animate={hidden ? "hidden" : "visible"}
         transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
         className={`fixed top-0 left-0 right-0 z-50 flex justify-between items-center w-full px-6 md:px-12 py-6 transition-all duration-300 ${
-          isScrolled 
+          isScrolled || isOpen
             ? "bg-[#030303]/95 backdrop-blur-md pointer-events-auto border-b border-white/5" 
             : "pointer-events-none mix-blend-difference"
         }`}
@@ -174,12 +174,12 @@ export default function Navbar() {
             animate={{ opacity: 1, clipPath: "circle(150% at 100% 0)" }}
             exit={{ opacity: 0, clipPath: "circle(0% at 100% 0)" }}
             transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-            className="fixed inset-0 bg-[#0a0a0a] z-40 flex flex-col justify-center px-8 lg:px-24 overflow-hidden"
+            className="fixed inset-0 bg-[#0a0a0a] z-40 flex flex-col justify-start lg:justify-center px-8 lg:px-24 overflow-y-auto pt-32 lg:pt-0 pb-12 lg:pb-0"
             dir={direction}
           >
-            <div className="absolute inset-0 bg-noise opacity-30 pointer-events-none mix-blend-overlay" />
+            <div className="absolute inset-0 bg-noise opacity-30 pointer-events-none mix-blend-overlay fixed" />
             
-            <div className="relative z-10 w-full max-w-7xl mx-auto flex flex-col lg:flex-row justify-between lg:items-center gap-16">
+            <div className="relative z-10 w-full max-w-7xl mx-auto flex flex-col lg:flex-row justify-between lg:items-center gap-12 lg:gap-16">
               
               {/* Main Links */}
               <div className="space-y-4 lg:space-y-8">

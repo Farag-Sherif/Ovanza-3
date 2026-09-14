@@ -1,11 +1,13 @@
 import { useRef, useContext } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { LanguageContext } from "../contexts/LanguageContext.jsx";
+import { DataContext } from "../contexts/DataContext.jsx";
 import { fadeRight, fadeLeft, fadeUp, scaleIn, staggerContainer } from "../utils/animations.js";
 
 export default function HeroV2() {
   const containerRef = useRef(null);
   const { language } = useContext(LanguageContext);
+  const { data } = useContext(DataContext);
   const isRTL = language === "ar";
   
   const { scrollYProgress } = useScroll({
@@ -51,10 +53,18 @@ export default function HeroV2() {
           </p>
         </motion.div>
         
-        <motion.div variants={fadeUp} className="overflow-visible px-8">
-          <h1 className="text-6xl md:text-[8rem] lg:text-[12rem] font-serif-luxury italic text-white leading-none tracking-tighter">
-            {isRTL ? "أوفانزا" : "Ovanza"}
-          </h1>
+        <motion.div variants={fadeUp} className="overflow-visible px-8 mb-4">
+          {data?.settings?.image_logo_path ? (
+            <img 
+              src={data.settings.image_logo_path} 
+              alt="Ovanza Logo" 
+              className="w-[200px] md:w-[400px] lg:w-[600px] h-auto object-contain filter drop-shadow-[0_0_20px_rgba(255,255,255,0.3)] mx-auto"
+            />
+          ) : (
+            <h1 className="text-6xl md:text-[8rem] lg:text-[12rem] font-serif-luxury italic text-white leading-none tracking-tighter">
+              {isRTL ? "أوفانزا" : "Ovanza"}
+            </h1>
+          )}
         </motion.div>
         
         <motion.div variants={fadeUp} className="overflow-visible px-8">

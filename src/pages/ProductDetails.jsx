@@ -114,18 +114,20 @@ function ProductDetails() {
       <Breadcrumb page={productName} subtitle={t("product_details")} />
 
       {/* Main Details Section */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start">
-          {/* Left Column: Image Gallery (6 cols) */}
-          <div className="lg:col-span-6 space-y-4">
+      <div className="max-w-[100vw] mx-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-0 lg:gap-16 items-start">
+          
+          {/* Left Column: Image Gallery (7 cols) - STICKY */}
+          <div className="lg:col-span-7 space-y-4 lg:sticky lg:top-0 h-auto lg:h-screen flex flex-col justify-center bg-[#050505] p-8 lg:p-16 border-r border-white/5">
             {/* Main Stage Image */}
-            <div className="relative aspect-square w-full rounded-3xl bg-gradient-to-b from-[#181818] to-[#121212] border border-white/[0.08] p-8 flex items-center justify-center overflow-hidden shadow-2xl group">
-              <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.06)_0%,transparent_70%)] pointer-events-none" />
+            <div className="relative w-full h-full min-h-[50vh] flex items-center justify-center overflow-hidden group">
+              <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(212,175,55,0.05)_0%,transparent_70%)] pointer-events-none" />
               
               <img
                 src={selectedImage || LUXURY_PRODUCT_PLACEHOLDER}
                 alt={productName}
-                className="max-h-[90%] max-w-[90%] object-contain filter drop-shadow-[0_20px_35px_rgba(0,0,0,0.9)] transition-transform duration-500 group-hover:scale-105"
+                style={{ viewTransitionName: `product-image-${data.item.id}` }}
+                className="max-h-[90vh] max-w-[100%] object-contain filter drop-shadow-[0_30px_50px_rgba(0,0,0,0.9)] transition-transform duration-1000 group-hover:scale-105"
                 loading="eager"
                 decoding="async"
                 onError={(e) => handleImageError(e, data.item)}
@@ -134,23 +136,23 @@ function ProductDetails() {
 
             {/* Thumbnails Carousel */}
             {images.length > 1 && (
-              <div className="flex gap-3 overflow-x-auto no-scrollbar py-2">
+              <div className="flex gap-4 overflow-x-auto no-scrollbar py-4 justify-center mt-auto">
                 {images.map((imgObj, index) => {
                   const isSelected = selectedImage === imgObj.image;
                   return (
                     <button
                       key={index}
                       onClick={() => setSelectedImage(imgObj.image)}
-                      className={`relative w-20 h-20 flex-shrink-0 rounded-2xl bg-[#181818] p-2 border transition-all duration-300 cursor-pointer overflow-hidden ${
+                      className={`relative w-16 h-16 sm:w-24 sm:h-24 flex-shrink-0 bg-transparent border-b-2 transition-all duration-300 cursor-pointer overflow-hidden ${
                         isSelected
-                          ? "border-white shadow-[0_0_15px_rgba(255,255,255,0.25)] scale-105"
-                          : "border-white/10 opacity-60 hover:opacity-100 hover:border-white/30"
+                          ? "border-[#d4af37] opacity-100"
+                          : "border-transparent opacity-40 hover:opacity-100"
                       }`}
                     >
                       <img
                         src={imgObj.image}
                         alt={`Thumbnail ${index + 1}`}
-                        className="w-full h-full object-contain"
+                        className="w-full h-full object-contain filter grayscale hover:grayscale-0 transition-all duration-500"
                         loading="lazy"
                         decoding="async"
                         onError={(e) => handleImageError(e, data.item)}
@@ -162,33 +164,53 @@ function ProductDetails() {
             )}
           </div>
 
-          {/* Right Column: Product Meta & Actions (6 cols) */}
-          <div className="lg:col-span-6 space-y-8" dir={isRTL ? "rtl" : "ltr"}>
+          {/* Right Column: Product Meta & Actions (5 cols) */}
+          <div className="lg:col-span-5 space-y-12 px-6 lg:pr-16 py-16 lg:py-32" dir={isRTL ? "rtl" : "ltr"}>
             <div>
               {/* Category Pill & Rating */}
-              <div className="flex items-center justify-between mb-4">
-                <div className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-white/[0.06] border border-white/10 text-[11px] font-semibold uppercase tracking-wider text-zinc-300">
-                  <Sparkles className="w-3.5 h-3.5 text-white" />
-                  <span>{isRTL ? "مستحضر صالونات فاخر" : "Salon Luxury Formula"}</span>
+              <div className="flex items-center justify-between mb-8">
+                <div className="text-[10px] font-bold uppercase tracking-[0.3em] text-[#d4af37]">
+                  {isRTL ? "مستحضر صالونات فاخر" : "Salon Luxury Formula"}
                 </div>
 
                 <div className="flex items-center gap-1">
                   {[...Array(5)].map((_, i) => (
-                    <Star key={i} className="w-4 h-4 fill-white text-white" />
+                    <Star key={i} className="w-3 h-3 fill-white text-white" />
                   ))}
-                  <span className="text-xs text-zinc-500 font-mono ml-1.5 rtl:ml-0 rtl:mr-1.5">
+                  <span className="text-[10px] text-zinc-500 font-mono ml-2 rtl:ml-0 rtl:mr-2">
                     (5.0)
                   </span>
                 </div>
               </div>
 
               {/* Title */}
-              <h1 className="text-2xl sm:text-4xl font-bold text-white tracking-tight leading-tight mb-6">
+              <h1 
+                className="text-4xl sm:text-6xl lg:text-7xl font-serif-luxury italic text-white tracking-tight leading-[1.1] mb-6 w-fit"
+                style={{ viewTransitionName: `product-title-${data.item.id}` }}
+              >
                 {productName}
               </h1>
 
+              {/* Conditional Brand and Price */}
+              <div className="flex flex-col gap-4 mb-12">
+                {(data.item.brand || data.item.partner?.name) && (
+                  <Link 
+                    to={`/brands/${data.item.partner_id || data.item.brand_id || ''}`} 
+                    className="text-xs uppercase tracking-[0.2em] text-zinc-400 font-bold hover:text-white transition-colors flex items-center gap-2"
+                  >
+                    {data.item.brand || data.item.partner?.name}
+                    <ArrowRight className="w-3 h-3" />
+                  </Link>
+                )}
+                {(data.item.price || data.item.price_formatted) && (
+                  <div className="text-2xl sm:text-3xl font-primary font-black text-white">
+                    {data.item.price_formatted || `$${data.item.price}`}
+                  </div>
+                )}
+              </div>
+
               {/* Description */}
-              <div className="prose prose-invert max-w-none text-zinc-300 text-sm sm:text-base leading-relaxed font-sans border-y border-white/[0.08] py-6">
+              <div className="prose prose-invert max-w-none text-zinc-400 text-base sm:text-lg leading-relaxed font-sans border-t border-white/10 pt-12">
                 <div
                   dangerouslySetInnerHTML={{
                     __html: productDescription,
@@ -198,40 +220,40 @@ function ProductDetails() {
             </div>
 
             {/* Action Buttons */}
-            <div className="flex flex-col sm:flex-row gap-4 pt-2">
+            <div className="flex flex-col gap-4 pt-8">
               {data.item.url ? (
                 <a
                   href={data.item.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center gap-3 px-8 py-4 rounded-full bg-white text-black hover:bg-zinc-200 text-xs font-bold uppercase tracking-wider transition-all duration-300 shadow-[0_0_30px_rgba(255,255,255,0.25)] hover:scale-105 active:scale-95 group font-sans"
+                  className="w-full inline-flex items-center justify-between px-8 py-5 bg-white text-black hover:bg-[#d4af37] text-xs font-bold uppercase tracking-[0.2em] transition-all duration-500 group"
                 >
                   <span>{t("buy_now")}</span>
-                  <ExternalLink className="w-4 h-4" />
+                  <ExternalLink className="w-4 h-4 transform group-hover:scale-125 transition-transform" />
                 </a>
               ) : null}
 
               <Link
                 to="/contact"
-                className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full bg-white/[0.06] hover:bg-white/[0.12] text-white border border-white/10 hover:border-white/20 text-xs font-semibold uppercase tracking-wider backdrop-blur-md transition-all duration-300 hover:scale-105 active:scale-95 font-sans"
+                className="w-full inline-flex items-center justify-between px-8 py-5 bg-transparent border border-white/20 text-white hover:border-white transition-all duration-500 text-xs font-bold uppercase tracking-[0.2em] group"
               >
-                <MessageCircle className="w-4 h-4 text-zinc-300" />
                 <span>{isRTL ? "استفسار وطلب جملة" : "Wholesale Inquiry"}</span>
+                <MessageCircle className="w-4 h-4 text-zinc-400 group-hover:text-white transition-colors" />
               </Link>
             </div>
 
             {/* Trust Badges */}
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-6 border-t border-white/[0.08]">
-              <div className="flex items-center gap-3 text-zinc-400 text-xs font-sans">
-                <ShieldCheck className="w-4 h-4 text-white flex-shrink-0" />
+            <div className="grid grid-cols-1 gap-6 pt-12 border-t border-white/10">
+              <div className="flex items-center gap-4 text-zinc-400 text-xs uppercase tracking-widest font-primary">
+                <ShieldCheck className="w-5 h-5 text-white flex-shrink-0" />
                 <span>{isRTL ? "مضمون معملياً 100%" : "100% Certified Pure"}</span>
               </div>
-              <div className="flex items-center gap-3 text-zinc-400 text-xs font-sans">
-                <Award className="w-4 h-4 text-white flex-shrink-0" />
+              <div className="flex items-center gap-4 text-zinc-400 text-xs uppercase tracking-widest font-primary">
+                <Award className="w-5 h-5 text-white flex-shrink-0" />
                 <span>{isRTL ? "معتمد لدى الصالونات" : "Salon Grade Efficacy"}</span>
               </div>
-              <div className="flex items-center gap-3 text-zinc-400 text-xs font-sans">
-                <Truck className="w-4 h-4 text-white flex-shrink-0" />
+              <div className="flex items-center gap-4 text-zinc-400 text-xs uppercase tracking-widest font-primary">
+                <Truck className="w-5 h-5 text-white flex-shrink-0" />
                 <span>{isRTL ? "شحن آمن وفوري" : "Fast & Secure Shipping"}</span>
               </div>
             </div>
@@ -263,7 +285,7 @@ function ProductDetails() {
               </Link>
             </div>
 
-            <ProductGrid products={data.related} />
+            <ProductGrid products={data.related.filter(p => String(p.id) !== String(data.item.id))} uniform={true} />
           </div>
         )}
       </div>

@@ -132,19 +132,30 @@ export default function Hero() {
         </h1>
       </motion.div>
 
-      {/* Avant-Garde Details */}
-      <div className="absolute bottom-12 left-6 lg:left-12 z-30 hidden sm:flex flex-col gap-2">
-        <span className="text-[9px] uppercase tracking-[0.4em] text-white/50">{isRTL ? "عام" : "EST."} 2026</span>
-        <span className="text-[9px] uppercase tracking-[0.4em] text-white/50">{isRTL ? "صُنع في الإمارات" : "UAE / GLOBAL"}</span>
+      {/* Avant-Garde Details & CTAs */}
+      <div className="absolute bottom-12 left-6 lg:left-12 z-30 flex flex-col gap-6">
+        <div className="flex flex-col gap-2">
+          <span className="text-[9px] uppercase tracking-[0.4em] text-white/50 font-bold">{isRTL ? "مستحضرات تجميل فاخرة" : "LUXURY COSMETICS"}</span>
+          <span className="text-[9px] uppercase tracking-[0.4em] text-white/50">{isRTL ? "حيث تلتقي العلامات التجارية بالاكتشاف" : "WHERE BRANDS MEET DISCOVERY."}</span>
+        </div>
+        <div className="flex gap-4">
+          <a href="/all-products" className="px-6 py-3 bg-white text-black text-xs font-bold tracking-widest uppercase hover:bg-[#d4af37] hover:text-black transition-colors duration-300">
+            {isRTL ? "اكتشف المنتجات" : "Discover Products"}
+          </a>
+          <a href="/brands" className="px-6 py-3 border border-white/20 text-white text-xs font-bold tracking-widest uppercase hover:bg-white/10 transition-colors duration-300">
+            {isRTL ? "العلامات التجارية" : "Explore Brands"}
+          </a>
+        </div>
       </div>
 
+      {/* Scroll indicator */}
       <a 
         href="#featured-products"
         onClick={(e) => {
           e.preventDefault();
           document.getElementById("featured-products")?.scrollIntoView({ behavior: "smooth" });
         }}
-        className="absolute bottom-12 right-6 lg:right-12 z-30 group flex items-center justify-center w-24 h-24 rounded-full border border-white/20 hover:border-[#d4af37] transition-colors duration-500 overflow-hidden"
+        className="absolute bottom-12 right-6 lg:right-12 z-30 group flex items-center justify-center w-16 h-16 md:w-24 md:h-24 rounded-full border border-white/20 hover:border-[#d4af37] transition-colors duration-500 overflow-hidden"
       >
         <motion.div 
           className="absolute inset-0 bg-[#d4af37]"
@@ -152,7 +163,7 @@ export default function Hero() {
           whileHover={{ y: 0 }}
           transition={{ duration: 0.6, ease: [0.76, 0, 0.24, 1] }}
         />
-        <ArrowDownRight className="w-8 h-8 text-white relative z-10 group-hover:text-black transition-colors duration-500" />
+        <ArrowDownRight className="w-6 h-6 md:w-8 md:h-8 text-white relative z-10 group-hover:text-black transition-colors duration-500" />
       </a>
 
     </section>

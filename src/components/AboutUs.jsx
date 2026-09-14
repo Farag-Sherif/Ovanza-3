@@ -3,6 +3,7 @@ import { DataContext } from "../contexts/DataContext.jsx";
 import { LanguageContext } from "../contexts/LanguageContext.jsx";
 import { Link } from "react-router-dom";
 import { motion, useScroll, useTransform } from "framer-motion";
+import { fadeRight, fadeLeft, fadeUp, staggerContainer } from "../utils/animations.js";
 import { ArrowRight } from "lucide-react";
 
 function AboutUs() {
@@ -51,33 +52,39 @@ function AboutUs() {
           {/* Left: Text Block */}
           <motion.div 
             style={{ y: isMobile ? 0 : yText }}
+            variants={staggerContainer}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.3 }}
             className="lg:col-span-6 flex flex-col items-start text-left rtl:text-right z-20"
           >
-            <div className="flex items-center gap-4 mb-16">
+            <motion.div variants={fadeRight} className="flex items-center gap-4 mb-16">
               <div className="w-12 h-[1px] bg-[#d4af37]" />
               <span className="text-[10px] uppercase tracking-[0.4em] text-[#d4af37] font-bold">
                 {isRTL ? "الإرث" : "The Heritage"}
               </span>
-            </div>
+            </motion.div>
 
-            <h3 className="text-5xl lg:text-7xl font-serif-luxury italic text-white leading-[1.1] tracking-tight mb-8">
+            <motion.h3 variants={fadeUp} className="text-5xl lg:text-7xl font-serif-luxury italic text-white leading-[1.1] tracking-tight mb-8">
               {isRTL ? "جمال يفوق" : "Beauty Beyond"} <br />
               <span className="font-primary font-black not-italic uppercase text-outline">{isRTL ? "الزمن" : "Measure"}</span>
-            </h3>
+            </motion.h3>
 
-            <p className="text-xl lg:text-3xl text-zinc-400 font-light leading-relaxed mb-16 max-w-lg line-clamp-[15]">
+            <motion.p variants={fadeUp} className="text-xl lg:text-3xl text-zinc-400 font-light leading-relaxed mb-16 max-w-lg line-clamp-[15]">
               {aboutText}
-            </p>
+            </motion.p>
 
-            <Link
-              to="/about-us"
-              className="inline-flex items-center gap-6 px-0 py-2 text-white hover:text-[#d4af37] text-sm font-bold uppercase tracking-[0.3em] group transition-colors duration-500"
-            >
-              <span>{isRTL ? "اكتشف الفلسفة" : "Discover Philosophy"}</span>
-              <div className="w-12 h-12 rounded-full border border-white/20 group-hover:border-[#d4af37] flex items-center justify-center transition-colors">
-                <ArrowRight className={`w-4 h-4 ${isRTL ? "rotate-180" : ""}`} />
-              </div>
-            </Link>
+            <motion.div variants={fadeUp}>
+              <Link
+                to="/about-us"
+                className="inline-flex items-center gap-6 px-0 py-2 text-white hover:text-[#d4af37] text-sm font-bold uppercase tracking-[0.3em] group transition-colors duration-500"
+              >
+                <span>{isRTL ? "اكتشف الفلسفة" : "Discover Philosophy"}</span>
+                <div className="w-12 h-12 rounded-full border border-white/20 group-hover:border-[#d4af37] flex items-center justify-center transition-colors">
+                  <ArrowRight className={`w-4 h-4 ${isRTL ? "rotate-180" : ""}`} />
+                </div>
+              </Link>
+            </motion.div>
           </motion.div>
 
           {/* Right: Immersive Image Reveal */}

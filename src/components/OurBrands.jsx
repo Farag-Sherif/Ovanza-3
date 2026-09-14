@@ -7,11 +7,11 @@ import { usePartnersQuery } from "../hooks/queries/usePartnersQuery.js";
 import { normalizeImageUrl } from "../utils/imageUtils.js";
 
 export default function OurBrands() {
-  const { data: brands = [] } = usePartnersQuery();
+  const { data: brands = [], isLoading } = usePartnersQuery();
   const { t } = useTranslation();
   const { language } = useContext(LanguageContext);
 
-  if (!brands || brands.length === 0) return null;
+  if (!isLoading && (!brands || brands.length === 0)) return null;
 
   // Duplicate brands array to create seamless infinite scroll effect
   const marqueeBrands = [...brands, ...brands, ...brands, ...brands];
@@ -25,7 +25,16 @@ export default function OurBrands() {
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[60vw] h-[60vw] max-w-[800px] max-h-[800px] bg-white/[0.015] rounded-full blur-[80px] pointer-events-none" />
 
       <div className="w-full relative z-10 flex flex-col items-center">
-        <div className="text-center mb-16">
+        <motion.div 
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.8 }}
+          variants={{
+            hidden: { opacity: 0, scale: 0.95 },
+            visible: { opacity: 1, scale: 1, transition: { duration: 0.8, ease: "easeOut" } }
+          }}
+          className="text-center mb-16"
+        >
           <div className="inline-flex items-center gap-2 mb-4">
             <Sparkles className="w-4 h-4 text-white/40" />
             <span className="text-[10px] sm:text-xs uppercase tracking-[0.3em] text-white/40 font-bold">
@@ -36,7 +45,7 @@ export default function OurBrands() {
           <h2 className="text-xl sm:text-2xl font-light text-zinc-500 tracking-widest uppercase">
             {t("ourbrands")}
           </h2>
-        </div>
+        </motion.div>
 
         {/* Infinite Scrolling Marquee Container */}
         <div className="w-full overflow-hidden relative flex items-center">

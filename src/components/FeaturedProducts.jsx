@@ -69,13 +69,14 @@ export default function FeaturedProducts() {
 
               return (
                 <div key={product.id || idx} className="shrink-0 w-[300px] md:w-[450px] lg:w-[500px] group">
-                  <Link to={`/product-details/${product.id}`} className="block relative w-full aspect-[4/5] overflow-hidden bg-white/[0.02] hover:bg-white/[0.05] transition-colors duration-700 ease-[0.76,0,0.24,1]">
+                  <Link to={`/product-details/${product.id}`} viewTransition className="block relative w-full aspect-[4/5] overflow-hidden bg-white/[0.02] hover:bg-white/[0.05] transition-colors duration-700 ease-[0.76,0,0.24,1]">
                     
                     {/* Image Layer */}
                     <div className="absolute inset-0 p-8 lg:p-16 flex items-center justify-center">
                       <img
                         src={getProductImageUrl(product)}
                         alt={productName}
+                        style={{ viewTransitionName: `product-image-${product.id}` }}
                         className="max-h-[100%] max-w-[100%] object-contain filter drop-shadow-[0_20px_40px_rgba(0,0,0,0.8)] transition-transform duration-[1.5s] ease-[0.16,1,0.3,1] group-hover:scale-110"
                         loading="lazy"
                         onError={(e) => handleImageError(e, product)}
@@ -101,7 +102,10 @@ export default function FeaturedProducts() {
                     <span className="text-[#d4af37] text-[10px] uppercase tracking-[0.3em] font-bold">
                       {idx % 3 === 0 ? "Bestseller" : "Salon Grade"}
                     </span>
-                    <h3 className="text-2xl lg:text-3xl font-black text-white uppercase tracking-wider font-primary truncate">
+                    <h3 
+                      className="text-2xl lg:text-3xl font-black text-white uppercase tracking-wider font-primary truncate"
+                      style={{ viewTransitionName: `product-title-${product.id}` }}
+                    >
                       {productName}
                     </h3>
                   </div>

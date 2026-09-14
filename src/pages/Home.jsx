@@ -3,21 +3,17 @@ import { useContext } from "react";
 import { LanguageContext } from "../contexts/LanguageContext.jsx";
 import { DataContext } from "../contexts/DataContext.jsx";
 
-// Redesigned Luxury Components
-import Hero from "../components/Hero.jsx";
+// Redesigned Luxury Components V2
+import HeroV2 from "../components/HeroV2.jsx";
+import StackedProducts from "../components/StackedProducts.jsx";
 import OurBrands from "../components/OurBrands.jsx";
 import AboutUs from "../components/AboutUs.jsx";
-import Categories from "../components/Categories.jsx";
-import FeaturedProducts from "../components/FeaturedProducts.jsx";
-import WhyChooseUs from "../components/WhyChooseUs.jsx";
 import Statistics from "../components/Statistics.jsx";
-import Brands from "../components/Brands.jsx";
-import QuoteSection from "../components/QuoteSection.jsx";
-import Testimonials from "../components/Testimonials.jsx";
-import Result from "../components/Result.jsx";
-import BlogFeatured from "../wrappers/blog-featured/BlogFeatured.jsx";
 import CallToAction from "../components/CallToAction.jsx";
-import Contact from "../components/Contact.jsx";
+import CommercialShowcase from "../components/CommercialShowcase.jsx";
+import VisionMission from "../components/VisionMission.jsx";
+import Categories from "../components/Categories.jsx";
+import BlogFeatured from "../wrappers/blog-featured/BlogFeatured.jsx";
 
 export default function Home() {
   const { language } = useContext(LanguageContext);
@@ -35,53 +31,42 @@ export default function Home() {
     "Experience luxury cosmetics, salon-grade hair care, and dermatologically certified beauty solutions from Ovanza.";
 
   return (
-    <div className="bg-black text-white selection:bg-white/20 selection:text-white min-h-screen">
+    <div className="bg-black text-white selection:bg-white/20 selection:text-white min-h-screen page-transition-wrapper">
       <Helmet>
         <title>{pageTitle}</title>
         <meta name="description" content={metaDescription} />
       </Helmet>
 
-      {/* 1. Hero Section */}
-      <Hero />
+      {/* 1. Cinematic Hero */}
+      <HeroV2 />
 
-      {/* 2. Global Brand Partners */}
-      <OurBrands />
-
-      {/* 3. Heritage & About Us */}
-      <AboutUs />
-
-      {/* 4. Interactive Product Categories */}
+      {/* 2. Collections / Categories */}
       <Categories />
 
-      {/* 5. Featured Luxury Products */}
-      <FeaturedProducts />
+      {/* 3. Stacked Products Discovery */}
+      <StackedProducts />
 
-      {/* 6. Why Choose Us / Brand Pillars */}
-      <WhyChooseUs />
+      {/* 4. Brands Marquee */}
+      <OurBrands />
 
-      {/* 7. Animated Statistics & Impact */}
+      {/* 5. Ovanza Story (About) */}
+      <AboutUs />
+
+      {/* 6. Vision / Mission */}
+      <VisionMission />
+
+      {/* 7. Commercial / Creative Showcase */}
+      <CommercialShowcase />
+
+      {/* 8. Trust / Numbers */}
       <Statistics />
 
-      {/* 8. Signature Brand Showcase */}
-      <Brands />
+      {/* 9. Editorial Blog */}
+      <BlogFeatured spaceBottomClass="pb-32" spaceTopClass="pt-32" />
 
-      {/* 9. Quality Manifesto Quote */}
-      <QuoteSection />
-
-      {/* 10. Client & Salon Testimonials */}
-      <Testimonials />
-
-      {/* 11. Statement Banner */}
-      <Result />
-
-      {/* 12. Editorial Blog & Guides */}
-      <BlogFeatured />
-
-      {/* 13. Call-to-Action Banner */}
+      {/* 10. Final CTA */}
       <CallToAction />
 
-      {/* 14. Wholesale & Direct Contact */}
-      <Contact />
     </div>
   );
 }

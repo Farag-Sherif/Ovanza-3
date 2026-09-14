@@ -66,7 +66,7 @@ export default function Footer() {
                 <img
                   src={settings.image_logo_path}
                   alt={t("company_name")}
-                  className="h-12 sm:h-16 w-auto object-contain filter drop-shadow-[0_0_20px_rgba(255,255,255,0.15)]"
+                  className="h-12 sm:h-16 w-auto object-contain transition-transform duration-500 hover:scale-105"
                   loading="lazy"
                   decoding="async"
                 />

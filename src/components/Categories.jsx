@@ -5,6 +5,8 @@ import { useTranslation } from "react-i18next";
 import { ArrowRight } from "lucide-react";
 import { useCategoriesQuery } from "../hooks/queries/useCategoriesQuery.js";
 import { normalizeImageUrl, handleImageError } from "../utils/imageUtils.js";
+import { motion } from "framer-motion";
+import { fadeUp, fadeRight, fadeLeft, staggerContainer } from "../utils/animations.js";
 
 function Categories() {
   const { data: categories = [], isLoading } = useCategoriesQuery();
@@ -13,30 +15,40 @@ function Categories() {
 
   const isRTL = language === "ar";
 
-  if (isLoading && categories.length === 0) return null;
-  if (categories.length === 0) return null;
+  if (!isLoading && categories.length === 0) return null;
 
   return (
-    <section id="our-products" className="bg-[#030303] relative min-h-screen pb-[20vh]">
+    <section id="our-products" className="bg-[#030303] relative min-h-screen pb-[20vh] overflow-hidden">
       
       <div className="w-full max-w-[1200px] mx-auto px-6 pt-32 lg:pt-48 flex flex-col gap-32">
         {/* Extreme Minimalist Header */}
-        <div className="flex flex-col mb-16">
-          <span className="text-xs uppercase tracking-[0.4em] text-[#d4af37] font-bold mb-4">
+        <motion.div 
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.3 }}
+          className="flex flex-col mb-16"
+        >
+          <motion.span variants={isRTL ? fadeLeft : fadeRight} className="text-xs uppercase tracking-[0.4em] text-[#d4af37] font-bold mb-4">
             {isRTL ? "مجموعات التجميل" : "Collections"}
-          </span>
-          <h2 className="text-6xl md:text-8xl lg:text-[10rem] font-serif-luxury text-white tracking-tighter leading-none italic">
+          </motion.span>
+          <motion.h2 variants={fadeUp} className="text-6xl md:text-8xl lg:text-[10rem] font-serif-luxury text-white tracking-tighter leading-none italic">
             {t("product_groups")}
-          </h2>
-        </div>
+          </motion.h2>
+        </motion.div>
 
         {/* Sticky Overlapping Panels */}
-        <div className="relative w-full">
-          {categories.map((category, index) => {
-            const categoryName =
-              language === "ar"
-                ? category?.translations?.[0]?.name || category?.name || category?.title
-                : category?.translations?.[1]?.name || category?.name || category?.title;
+        <div className="relative w-full min-h-[50vh]">
+          {isLoading ? (
+            <div className="flex justify-center h-full items-center">
+              <div className="w-8 h-8 rounded-full border-2 border-white/20 border-t-white animate-spin" />
+            </div>
+          ) : (
+            categories.map((category, index) => {
+              const categoryName =
+                language === "ar"
+                  ? category?.translations?.[0]?.name || category?.name || category?.title
+                  : category?.translations?.[1]?.name || category?.name || category?.title;
 
             // Compute stacking logic
             const topOffset = `calc(10vh + ${index * 40}px)`;
@@ -80,7 +92,7 @@ function Categories() {
                 </div>
               </div>
             );
-          })}
+          }))}
         </div>
       </div>
     </section>

@@ -5,6 +5,7 @@ import { LanguageContext } from "../../contexts/LanguageContext";
 import { ChevronLeft, ChevronRight, BookOpen, ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useBlogsQuery } from "../../hooks/queries/useBlogsQuery";
+import { motion } from "framer-motion";
 
 const BlogFeatured = ({ spaceTopClass, spaceBottomClass }) => {
   const { language } = useContext(LanguageContext);
@@ -32,18 +33,23 @@ const BlogFeatured = ({ spaceTopClass, spaceBottomClass }) => {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
-          <div className="text-left rtl:text-right">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/[0.04] border border-white/[0.08] mb-3">
-              <BookOpen className="w-3.5 h-3.5 text-zinc-400" />
-              <span className="text-xs uppercase tracking-widest text-zinc-400 font-medium font-sans">
+        <motion.div 
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.5 }}
+          transition={{ duration: 0.8 }}
+          className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6 text-center md:text-left rtl:md:text-right w-full"
+        >
+            <div>
+              <span className="text-xs uppercase tracking-[0.4em] text-[#d4af37] font-bold mb-4 block">
                 {isRTL ? "المجلة والمدونة" : "Editorial & Insights"}
               </span>
+              <h2 className="text-5xl md:text-7xl lg:text-[7rem] font-serif-luxury italic text-white tracking-tighter leading-none mb-2">
+                {isRTL ? "أحدث المقالات" : "Latest"}
+                <br />
+                <span className="font-primary not-italic font-black text-outline uppercase">{isRTL ? "وأسرار العناية" : "Articles"}</span>
+              </h2>
             </div>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white tracking-tight">
-              {isRTL ? "أحدث المقالات وأسرار العناية" : "Latest Articles & Beauty Guides"}
-            </h2>
-          </div>
 
           <Link
             to="/blog"
@@ -52,7 +58,7 @@ const BlogFeatured = ({ spaceTopClass, spaceBottomClass }) => {
             <span>{isRTL ? "جميع المقالات" : "View All Articles"}</span>
             <ArrowRight className={`w-4 h-4 transition-transform duration-300 ${isRTL ? "rotate-180 group-hover:-translate-x-1" : "group-hover:translate-x-1"}`} />
           </Link>
-        </div>
+        </motion.div>
 
         {/* Blog Posts Grid */}
         {isLoading ? (

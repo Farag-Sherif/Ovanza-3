@@ -62,10 +62,11 @@ export default function Navbar() {
 
   const navLinks = [
     { label: t("home"), href: "/", isAnchor: false },
-    { label: t("aboutUs"), href: "aboutUs", isAnchor: true },
-    { label: t("products"), href: "our-products", isAnchor: true },
-    { label: t("brands"), href: "our-brands", isAnchor: true },
-    { label: t("contact"), href: "contact", isAnchor: true },
+    { label: t("aboutUs") || "About Us", href: "/about-us", isAnchor: false },
+    { label: t("brands") || "Brands", href: "/brands", isAnchor: false },
+    { label: t("products") || "Products", href: "/all-products", isAnchor: false },
+    { label: isRTL ? "الحملات الإعلانية" : "Commercial", href: "/commercial", isAnchor: false },
+    { label: t("contact"), href: "/contact", isAnchor: false },
   ];
 
   return (
@@ -81,14 +82,13 @@ export default function Navbar() {
             : "pointer-events-none mix-blend-difference"
         }`}
       >
-        {/* Logo - Left */}
         <div className="pointer-events-auto flex-shrink-0">
           <Link to="/" className="flex items-center group focus:outline-none">
             {data?.settings?.image_logo_path ? (
               <img
                 src={data.settings.image_logo_path}
                 alt={t("company_name")}
-                className="h-6 md:h-8 w-auto object-contain brightness-0 invert"
+                className="h-10 md:h-14 w-auto object-contain transition-transform duration-500 group-hover:scale-105"
               />
             ) : (
               <span className="text-white text-xl md:text-2xl font-black tracking-widest uppercase font-primary">
@@ -123,6 +123,7 @@ export default function Navbar() {
                   <Link
                     to={item.href}
                     onClick={() => setActiveTab(item.href)}
+                    viewTransition
                     className="relative z-10 py-2 text-[11px] font-bold tracking-[0.2em] transition-colors duration-300 uppercase text-white/70 hover:text-white flex flex-col items-center"
                   >
                     {item.label}
@@ -204,6 +205,7 @@ export default function Navbar() {
                       <Link
                         to={item.href}
                         onClick={() => setIsOpen(false)}
+                        viewTransition
                         className="block text-5xl sm:text-7xl lg:text-8xl font-black text-outline-hover-fill hover:text-white transition-colors duration-500 font-primary uppercase tracking-tighter"
                       >
                         {item.label}

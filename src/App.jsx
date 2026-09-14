@@ -19,6 +19,10 @@ const AboutUsPage = React.lazy(() => import("./pages/AboutUsPage.jsx"));
 const BlogStandard = React.lazy(() => import("./pages/blog/BlogNoSidebar"));
 const BlogDetailsStandard = React.lazy(() => import("./pages/blog/BlogDetailsStandard"));
 
+const Brands = React.lazy(() => import("./pages/Brands.jsx"));
+const BrandProfile = React.lazy(() => import("./pages/BrandProfile.jsx"));
+const Commercial = React.lazy(() => import("./pages/Commercial.jsx"));
+
 const router = createBrowserRouter([
   {
     path: "/",
@@ -30,8 +34,11 @@ const router = createBrowserRouter([
     children: [
       { index: true, element: <Home /> },
       { path: "home", element: <Home /> },
+      { path: "brands", element: <Brands /> },
+      { path: "brands/:id", element: <BrandProfile /> },
       { path: "all-products", element: <AllProducts /> },
       { path: "product-details/:id", element: <ProductDetails /> },
+      { path: "commercial", element: <Commercial /> },
       { path: "blog", element: <BlogStandard /> },
       { path: "post/:id", element: <BlogDetailsStandard /> },
       { path: "contact", element: <Contact /> },

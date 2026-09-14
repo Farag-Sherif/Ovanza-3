@@ -54,8 +54,12 @@ function Categories() {
             const topOffset = `calc(10vh + ${index * 40}px)`;
 
             return (
-              <div
+              <motion.div
                 key={category.id || index}
+                initial={{ opacity: 0, y: 100 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-100px" }}
+                transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
                 className="sticky w-full h-[70vh] lg:h-[80vh] bg-[#0a0a0a] rounded-3xl overflow-hidden shadow-[0_-20px_50px_rgba(0,0,0,0.5)] mb-12 flex flex-col group border border-white/5"
                 style={{ top: topOffset, zIndex: index + 1 }}
               >
@@ -84,13 +88,13 @@ function Categories() {
                   
                   <Link
                     to={`/all-products?categoryId=${category.id}`}
-                    className="inline-flex items-center gap-6 px-10 py-5 bg-white text-black text-xs font-bold uppercase tracking-[0.2em] w-fit rounded-full magnetic-btn group/btn"
+                    className="inline-flex items-center gap-6 px-10 py-5 bg-white text-black text-xs font-bold uppercase tracking-[0.2em] w-fit rounded-full magnetic-btn group/btn hover:bg-[#d4af37] transition-colors"
                   >
                     <span>{isRTL ? "اكتشف" : "Discover"}</span>
                     <ArrowRight className={`w-4 h-4 ${isRTL ? "rotate-180" : ""}`} />
                   </Link>
                 </div>
-              </div>
+              </motion.div>
             );
           }))}
         </div>

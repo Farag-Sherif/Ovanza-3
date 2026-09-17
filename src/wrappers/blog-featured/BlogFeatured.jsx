@@ -44,7 +44,7 @@ const BlogFeatured = ({ spaceTopClass, spaceBottomClass }) => {
               <span className="text-xs uppercase tracking-[0.4em] text-[#d4af37] font-bold mb-4 block">
                 {isRTL ? "المجلة والمدونة" : "Editorial & Insights"}
               </span>
-              <h2 className="text-5xl md:text-7xl lg:text-[7rem] font-serif-luxury italic text-white tracking-tighter leading-none mb-2">
+              <h2 className="text-5xl md:text-7xl lg:text-[7rem] rtl:text-4xl rtl:md:text-6xl rtl:lg:text-[5rem] font-serif-luxury italic text-white tracking-tighter rtl:tracking-normal leading-none mb-2">
                 {isRTL ? "أحدث المقالات" : "Latest"}
                 <br />
                 <span className="font-primary not-italic font-black text-outline uppercase">{isRTL ? "وأسرار العناية" : "Articles"}</span>

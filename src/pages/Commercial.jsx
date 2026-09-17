@@ -4,10 +4,13 @@ import { Link } from "react-router-dom";
 import { ArrowUpRight, Globe, ShieldCheck, Box } from "lucide-react";
 import { LanguageContext } from "../contexts/LanguageContext.jsx";
 import CallToAction from "../components/CallToAction.jsx";
+import { useCategoriesQuery } from "../hooks/queries/useCategoriesQuery.js";
+import { normalizeImageUrl, handleImageError } from "../utils/imageUtils.js";
 
 export default function Commercial() {
   const { language } = useContext(LanguageContext);
   const isRTL = language === "ar";
+  const { data: categories = [] } = useCategoriesQuery();
 
   return (
     <div className="bg-black text-white min-h-screen pt-32 page-transition-wrapper">
@@ -84,17 +87,41 @@ export default function Commercial() {
         
         <div className="flex flex-col md:flex-row gap-6 h-[400px]">
           <Link to="/all-products" className="flex-1 relative rounded-2xl border border-white/10 overflow-hidden group">
-            <div className="absolute inset-0 bg-zinc-900/50 group-hover:bg-zinc-800/50 transition-colors duration-500" />
+            {categories[0]?.logo_path && (
+              <img 
+                src={normalizeImageUrl(categories[0].logo_path)} 
+                alt="Category" 
+                className="absolute inset-0 w-full h-full object-cover filter brightness-75 group-hover:brightness-50 group-hover:scale-105 transition-all duration-700" 
+                onError={handleImageError} 
+              />
+            )}
+            <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent pointer-events-none" />
             <div className="absolute inset-0 p-8 flex flex-col justify-end">
-              <h3 className="text-2xl font-serif-luxury italic mb-2">Salon Grade Haircare</h3>
-              <p className="text-zinc-400 text-sm">High-volume supply available.</p>
+              <h3 className="text-2xl font-serif-luxury italic mb-2 relative z-10">
+                {isRTL ? "العناية الفاخرة بالبشرة" : "Luxury Skincare"}
+              </h3>
+              <p className="text-zinc-400 text-sm relative z-10">
+                {isRTL ? "مجموعات معتمدة ومختبرة طبياً." : "Dermatologically tested portfolios."}
+              </p>
             </div>
           </Link>
           <Link to="/all-products" className="flex-1 relative rounded-2xl border border-white/10 overflow-hidden group">
-            <div className="absolute inset-0 bg-zinc-900/50 group-hover:bg-zinc-800/50 transition-colors duration-500" />
+            {categories[1]?.logo_path && (
+              <img 
+                src={normalizeImageUrl(categories[1].logo_path)} 
+                alt="Category" 
+                className="absolute inset-0 w-full h-full object-cover filter brightness-75 group-hover:brightness-50 group-hover:scale-105 transition-all duration-700" 
+                onError={handleImageError} 
+              />
+            )}
+            <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent pointer-events-none" />
             <div className="absolute inset-0 p-8 flex flex-col justify-end">
-              <h3 className="text-2xl font-serif-luxury italic mb-2">Luxury Skincare</h3>
-              <p className="text-zinc-400 text-sm">Dermatologically tested portfolios.</p>
+              <h3 className="text-2xl font-serif-luxury italic mb-2 relative z-10">
+                {isRTL ? "العناية بالشعر الاحترافية" : "Salon Grade Haircare"}
+              </h3>
+              <p className="text-zinc-400 text-sm relative z-10">
+                {isRTL ? "قدرة عالية على توفير الكميات التجارية." : "High-volume supply available."}
+              </p>
             </div>
           </Link>
         </div>

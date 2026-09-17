@@ -31,12 +31,12 @@ export default function CommercialShowcase() {
           </h2>
           <p className="text-zinc-400 text-lg md:text-xl max-w-lg mx-auto leading-relaxed">
             {isRTL 
-              ? "مساحة مخصصة للحملات الإعلانية المستقبلية وجلسات التصوير وصور العلامة التجارية." 
-              : "Placeholder for future campaigns, editorial shoots, and brand positioning imagery."}
+              ? "استكشف أحدث حملاتنا الإعلانية وجلسات التصوير التي تبرز رقي وفخامة أوفانزا." 
+              : "Explore our latest editorial shoots, aesthetic campaigns, and brand imagery showcasing the elegance of Ovanza."}
           </p>
         </motion.div>
 
-        {/* Fancy Placeholders Grid */}
+        {/* Brand Showcases Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           
           <motion.div style={{ y: y1 }} className="aspect-[3/4] bg-[#111] rounded-2xl relative overflow-hidden group">
@@ -44,7 +44,7 @@ export default function CommercialShowcase() {
             <div className="absolute inset-0 flex flex-col items-center justify-center p-6 text-center z-10 transition-transform duration-700 group-hover:scale-105">
               <span className="text-2xl font-serif-luxury italic text-white/50 mb-2">01</span>
               <span className="text-4xl font-primary font-black uppercase text-transparent -webkit-text-stroke-1 -webkit-text-stroke-white/30 group-hover:-webkit-text-stroke-white transition-all duration-500">
-                FANCY
+                {isRTL ? "العناية" : "CARE"}
               </span>
             </div>
           </motion.div>
@@ -54,7 +54,7 @@ export default function CommercialShowcase() {
             <div className="absolute inset-0 flex flex-col items-center justify-center p-6 text-center z-10 transition-transform duration-700 group-hover:scale-105">
               <span className="text-2xl font-serif-luxury italic text-white/50 mb-2">02</span>
               <span className="text-4xl font-primary font-black uppercase text-transparent -webkit-text-stroke-1 -webkit-text-stroke-white/30 group-hover:-webkit-text-stroke-white transition-all duration-500">
-                FANCY
+                {isRTL ? "الجمال" : "BEAUTY"}
               </span>
             </div>
           </motion.div>
@@ -64,7 +64,7 @@ export default function CommercialShowcase() {
             <div className="absolute inset-0 flex flex-col items-center justify-center p-6 text-center z-10 transition-transform duration-700 group-hover:scale-105">
               <span className="text-2xl font-serif-luxury italic text-white/50 mb-2">03</span>
               <span className="text-4xl font-primary font-black uppercase text-transparent -webkit-text-stroke-1 -webkit-text-stroke-white/30 group-hover:-webkit-text-stroke-white transition-all duration-500">
-                FANCY
+                {isRTL ? "الفخامة" : "LUXURY"}
               </span>
             </div>
           </motion.div>
@@ -74,7 +74,7 @@ export default function CommercialShowcase() {
             <div className="absolute inset-0 flex flex-col items-center justify-center p-6 text-center z-10 transition-transform duration-700 group-hover:scale-105">
               <span className="text-2xl font-serif-luxury italic text-white/50 mb-2">04</span>
               <span className="text-4xl font-primary font-black uppercase text-transparent -webkit-text-stroke-1 -webkit-text-stroke-white/30 group-hover:-webkit-text-stroke-white transition-all duration-500">
-                FANCY
+                {isRTL ? "الأناقة" : "ELEGANCE"}
               </span>
             </div>
           </motion.div>

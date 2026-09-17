@@ -108,7 +108,7 @@ export default function Navbar() {
                   <a
                     href={`#${item.href}`}
                     onClick={(e) => handleScrollToSection(e, item.href)}
-                    className="relative z-10 py-2 text-[11px] font-bold tracking-[0.2em] transition-colors duration-300 uppercase text-white/70 hover:text-white flex flex-col items-center"
+                    className="relative z-10 py-2 text-sm rtl:text-lg font-bold tracking-[0.2em] rtl:tracking-normal transition-colors duration-300 uppercase text-white/70 hover:text-white flex flex-col items-center"
                   >
                     {item.label}
                     {isActive && (
@@ -124,7 +124,7 @@ export default function Navbar() {
                     to={item.href}
                     onClick={() => setActiveTab(item.href)}
                     viewTransition
-                    className="relative z-10 py-2 text-[11px] font-bold tracking-[0.2em] transition-colors duration-300 uppercase text-white/70 hover:text-white flex flex-col items-center"
+                    className="relative z-10 py-2 text-sm rtl:text-lg font-bold tracking-[0.2em] rtl:tracking-normal transition-colors duration-300 uppercase text-white/70 hover:text-white flex flex-col items-center"
                   >
                     {item.label}
                     {isActive && (
@@ -175,7 +175,7 @@ export default function Navbar() {
             animate={{ opacity: 1, clipPath: "circle(150% at 100% 0)" }}
             exit={{ opacity: 0, clipPath: "circle(0% at 100% 0)" }}
             transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-            className="fixed inset-0 bg-[#0a0a0a] z-40 flex flex-col justify-start lg:justify-center px-8 lg:px-24 overflow-y-auto pt-32 lg:pt-0 pb-12 lg:pb-0"
+            className="fixed inset-0 bg-[#0a0a0a] z-40 flex flex-col justify-start lg:justify-start px-8 lg:px-24 overflow-y-auto pt-32 lg:pt-48 pb-12 lg:pb-12"
             dir={direction}
           >
             <div className="absolute inset-0 bg-noise opacity-30 pointer-events-none mix-blend-overlay fixed" />
@@ -197,7 +197,7 @@ export default function Navbar() {
                       <a
                         href={`#${item.href}`}
                         onClick={(e) => handleScrollToSection(e, item.href)}
-                        className="block text-5xl sm:text-7xl lg:text-8xl font-black text-outline-hover-fill hover:text-white transition-colors duration-500 font-primary uppercase tracking-tighter"
+                        className="block text-5xl sm:text-7xl lg:text-8xl font-black text-outline-hover-fill rtl:text-white/50 rtl:[-webkit-text-stroke:0] hover:text-white transition-colors duration-500 font-primary uppercase tracking-tighter rtl:tracking-normal"
                       >
                         {item.label}
                       </a>
@@ -206,7 +206,7 @@ export default function Navbar() {
                         to={item.href}
                         onClick={() => setIsOpen(false)}
                         viewTransition
-                        className="block text-5xl sm:text-7xl lg:text-8xl font-black text-outline-hover-fill hover:text-white transition-colors duration-500 font-primary uppercase tracking-tighter"
+                        className="block text-5xl sm:text-7xl lg:text-8xl font-black text-outline-hover-fill rtl:text-white/50 rtl:[-webkit-text-stroke:0] hover:text-white transition-colors duration-500 font-primary uppercase tracking-tighter rtl:tracking-normal"
                       >
                         {item.label}
                       </Link>

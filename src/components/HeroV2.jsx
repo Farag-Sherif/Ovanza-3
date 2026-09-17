@@ -67,11 +67,7 @@ export default function HeroV2() {
           )}
         </motion.div>
         
-        <motion.div variants={fadeUp} className="overflow-visible px-8">
-          <h2 className="text-3xl md:text-7xl font-primary font-black uppercase text-transparent -webkit-text-stroke-1 -webkit-text-stroke-white/80 leading-none mt-2">
-            {isRTL ? "لمستحضرات التجميل" : "Cosmetics"}
-          </h2>
-        </motion.div>
+
 
       </motion.div>
     </section>

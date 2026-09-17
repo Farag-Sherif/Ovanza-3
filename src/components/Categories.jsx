@@ -32,7 +32,7 @@ function Categories() {
           <motion.span variants={isRTL ? fadeLeft : fadeRight} className="text-xs uppercase tracking-[0.4em] text-[#d4af37] font-bold mb-4">
             {isRTL ? "مجموعات التجميل" : "Collections"}
           </motion.span>
-          <motion.h2 variants={fadeUp} className="text-6xl md:text-8xl lg:text-[10rem] font-serif-luxury text-white tracking-tighter leading-none italic">
+          <motion.h2 variants={fadeUp} className="text-6xl md:text-8xl lg:text-[10rem] rtl:text-4xl rtl:md:text-6xl rtl:lg:text-[6rem] font-serif-luxury text-white tracking-tighter rtl:tracking-normal leading-none italic">
             {t("product_groups")}
           </motion.h2>
         </motion.div>

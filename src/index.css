@@ -244,3 +244,28 @@ a, button, input, textarea, select {
   from { opacity: 1; transform: translateY(0); }
   to { opacity: 0; transform: translateY(-10px); }
 }
+
+/* RTL Typography Fixes */
+.rtl .tracking-tighter,
+.rtl .tracking-tight,
+.rtl .tracking-wide,
+.rtl .tracking-widest,
+.rtl .tracking-\[0\.2em\],
+.rtl .tracking-\[0\.3em\],
+.rtl .tracking-\[0\.4em\],
+.rtl .tracking-normal {
+  letter-spacing: normal !important;
+}
+
+.rtl .text-outline,
+.rtl .text-outline-hover-fill {
+  color: rgba(255, 255, 255, 0.5) !important;
+  -webkit-text-stroke: 0 !important;
+}
+
+.rtl .text-outline:hover,
+.rtl .text-outline-hover-fill:hover,
+.rtl .group:hover .text-outline-hover-fill {
+  color: #ffffff !important;
+  -webkit-text-stroke: 0 !important;
+}

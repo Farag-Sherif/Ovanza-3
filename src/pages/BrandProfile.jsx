@@ -122,9 +122,8 @@ function FancyPlaceholders({ title, prefix, isRTL }) {
               <div className="absolute inset-0 flex flex-col items-center justify-center p-6 text-center z-10">
                 <span className="text-2xl font-serif-luxury italic text-white/50 mb-2">0{num}</span>
                 <span className="text-3xl font-primary font-black uppercase text-transparent -webkit-text-stroke-1 -webkit-text-stroke-white/30 group-hover:-webkit-text-stroke-white transition-all duration-500">
-                  {isRTL ? "مساحة" : "Fancy"} {num}
+                  {prefix} {num}
                 </span>
-                <span className="mt-4 text-xs tracking-widest text-[#d4af37] opacity-0 group-hover:opacity-100 transition-opacity">({prefix})</span>
               </div>
             </motion.div>
           ))}
@@ -194,7 +193,7 @@ export default function BrandProfile() {
             />
           )}
           <h1 
-            className="text-6xl md:text-[8rem] font-serif-luxury italic tracking-tight mb-8 leading-none"
+            className="text-6xl md:text-[8rem] rtl:text-5xl rtl:md:text-[6rem] font-serif-luxury italic tracking-tight rtl:tracking-normal mb-8 leading-none"
             style={{ viewTransitionName: `brand-title-${brand.id}` }}
           >
             {brand.title || brand.name}

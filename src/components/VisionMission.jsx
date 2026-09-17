@@ -42,10 +42,10 @@ export default function VisionMission() {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="w-full md:w-2/3"
           >
-            <p className="text-2xl md:text-5xl font-primary uppercase tracking-tight leading-tight text-white">
+            <p className="text-2xl md:text-5xl font-primary uppercase tracking-tight rtl:tracking-normal leading-tight text-white">
               {isRTL 
-                ? <>إعادة تعريف مشهد مستحضرات التجميل الفاخرة من خلال دمج <span className="text-transparent -webkit-text-stroke-1 -webkit-text-stroke-white">فعالية الصالونات</span> مع الأناقة العصرية.</>
-                : <>To redefine the luxury cosmetics landscape by merging <span className="text-transparent -webkit-text-stroke-1 -webkit-text-stroke-white">salon-grade efficacy</span> with editorial elegance.</>
+                ? <>إعادة تعريف مشهد مستحضرات التجميل الفاخرة من خلال دمج <span className="text-transparent rtl:text-[#d4af37] -webkit-text-stroke-1 rtl:[-webkit-text-stroke:0] -webkit-text-stroke-white">فعالية الصالونات</span> مع الأناقة العصرية.</>
+                : <>To redefine the luxury cosmetics landscape by merging <span className="text-transparent rtl:text-[#d4af37] -webkit-text-stroke-1 rtl:[-webkit-text-stroke:0] -webkit-text-stroke-white">salon-grade efficacy</span> with editorial elegance.</>
               }
             </p>
           </motion.div>
@@ -71,10 +71,10 @@ export default function VisionMission() {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="w-full md:w-2/3"
           >
-            <p className="text-2xl md:text-5xl font-primary uppercase tracking-tight leading-tight text-white">
+            <p className="text-2xl md:text-5xl font-primary uppercase tracking-tight rtl:tracking-normal leading-tight text-white">
               {isRTL 
-                ? <>تمكين المستهلكين عالمياً من الوصول إلى أرقى <span className="text-transparent -webkit-text-stroke-1 -webkit-text-stroke-white">ابتكارات التجميل</span> المعتمدة طبياً.</>
-                : <>Empowering global consumers with access to the finest curated <span className="text-transparent -webkit-text-stroke-1 -webkit-text-stroke-white">beauty innovations</span> and dermatologically certified care.</>
+                ? <>تمكين المستهلكين عالمياً من الوصول إلى أرقى <span className="text-transparent rtl:text-[#d4af37] -webkit-text-stroke-1 rtl:[-webkit-text-stroke:0] -webkit-text-stroke-white">ابتكارات التجميل</span> المعتمدة طبياً.</>
+                : <>Empowering global consumers with access to the finest curated <span className="text-transparent rtl:text-[#d4af37] -webkit-text-stroke-1 rtl:[-webkit-text-stroke:0] -webkit-text-stroke-white">beauty innovations</span> and dermatologically certified care.</>
               }
             </p>
           </motion.div>
@@ -100,10 +100,10 @@ export default function VisionMission() {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="w-full md:w-2/3"
           >
-            <p className="text-2xl md:text-5xl font-primary uppercase tracking-tight leading-tight text-white">
+            <p className="text-2xl md:text-5xl font-primary uppercase tracking-tight rtl:tracking-normal leading-tight text-white">
               {isRTL 
-                ? <>نتواجد في نقطة التقاء <span className="text-transparent -webkit-text-stroke-1 -webkit-text-stroke-white">الأداء الاحترافي</span> والفخامة التي يسهل الوصول إليها.</>
-                : <>Positioned at the intersection of <span className="text-transparent -webkit-text-stroke-1 -webkit-text-stroke-white">professional performance</span> and accessible luxury.</>
+                ? <>نتواجد في نقطة التقاء <span className="text-transparent rtl:text-[#d4af37] -webkit-text-stroke-1 rtl:[-webkit-text-stroke:0] -webkit-text-stroke-white">الأداء الاحترافي</span> والفخامة التي يسهل الوصول إليها.</>
+                : <>Positioned at the intersection of <span className="text-transparent rtl:text-[#d4af37] -webkit-text-stroke-1 rtl:[-webkit-text-stroke:0] -webkit-text-stroke-white">professional performance</span> and accessible luxury.</>
               }
             </p>
           </motion.div>
